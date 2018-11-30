@@ -1,0 +1,13 @@
+library(tidyverse)
+library(dplyr)
+library(stringr)
+
+plays.09 <- read_csv("pbpdata/reg_pbp_2009.csv")
+plays.10 <- read_csv("pbpdata/reg_pbp_2010.csv")
+plays.11 <- read_csv("pbpdata/reg_pbp_2011.csv")
+plays.12 <- read_csv("pbpdata/reg_pbp_2012.csv")
+plays.13 <- read_csv("pbpdata/reg_pbp_2013.csv")
+plays.14 <- read_csv("pbpdata/reg_pbp_2014.csv")
+plays.15 <- read_csv("pbpdata/reg_pbp_2015.csv")
+plays.16 <- read_csv("pbpdata/reg_pbp_2016.csv")
+plays.17 <- read_csv("pbpdata/reg_pbp_2017.csv")
