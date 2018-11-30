@@ -12,70 +12,99 @@ plays.15 <- read_csv("pbpdata/reg_pbp_2015.csv")
 plays.16 <- read_csv("pbpdata/reg_pbp_2016.csv")
 plays.17 <- read_csv("pbpdata/reg_pbp_2017.csv")
 
-#data is huge so need to only get the variables we need
+#data is huge so need to only get the variables we need across all the data frame
 
 plays.09 <- plays.09 %>%  
-  select(passer_player_name, qb_dropback, qb_scramble, sack, pass_attempt, penalty_type, interception, qb_hit, touchdown, complete_pass) %>% 
+  select(game_id, passer_player_name, qb_dropback, 
+         qb_scramble, sack, pass_attempt, penalty_type, 
+         interception, qb_hit, touchdown, complete_pass) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
          passer_player_name =="A.Rodgers"| 
          passer_player_name =="T.Brady"|
-         passer_player_name =="E.Manning") 
+         passer_player_name =="E.Manning") %>% 
+  mutate(year = str_sub(game_id, start = 1, end = 4))
 
 plays.10 <- plays.10 %>%  
-  select(passer_player_name, qb_dropback, qb_scramble, sack, pass_attempt, penalty_type, interception, qb_hit, touchdown, complete_pass) %>% 
+  select(game_id, passer_player_name, qb_dropback, 
+         qb_scramble, sack, pass_attempt, penalty_type, 
+         interception, qb_hit, touchdown, complete_pass) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
            passer_player_name =="A.Rodgers"| 
            passer_player_name =="T.Brady"|
-           passer_player_name =="E.Manning") 
+           passer_player_name =="E.Manning") %>% 
+  mutate(year = str_sub(game_id, start = 1, end = 4))
 
 plays.11 <- plays.11 %>%  
-  select(passer_player_name, qb_dropback, qb_scramble, sack, pass_attempt, penalty_type, interception, qb_hit, touchdown, complete_pass) %>% 
+  select(game_id, passer_player_name, qb_dropback, 
+         qb_scramble, sack, pass_attempt, penalty_type, 
+         interception, qb_hit, touchdown, complete_pass) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
            passer_player_name =="A.Rodgers"| 
            passer_player_name =="T.Brady"|
-           passer_player_name =="E.Manning") 
+           passer_player_name =="E.Manning") %>% 
+  mutate(year = str_sub(game_id, start = 1, end = 4))
 
 plays.12 <- plays.12 %>%  
-  select(passer_player_name, qb_dropback, qb_scramble, sack, pass_attempt, penalty_type, interception, qb_hit, touchdown, complete_pass) %>% 
+  select(game_id, passer_player_name, qb_dropback, 
+         qb_scramble, sack, pass_attempt, penalty_type, 
+         interception, qb_hit, touchdown, complete_pass) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
            passer_player_name =="A.Rodgers"| 
            passer_player_name =="T.Brady"|
-           passer_player_name =="E.Manning") 
+           passer_player_name =="E.Manning") %>% 
+  mutate(year = str_sub(game_id, start = 1, end = 4))
 
 plays.13 <- plays.13 %>%  
-  select(passer_player_name, qb_dropback, qb_scramble, sack, pass_attempt, penalty_type, interception, qb_hit, touchdown, complete_pass) %>% 
+  select(game_id, passer_player_name, qb_dropback, 
+         qb_scramble, sack, pass_attempt, penalty_type, 
+         interception, qb_hit, touchdown, complete_pass) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
            passer_player_name =="A.Rodgers"| 
            passer_player_name =="T.Brady"|
-           passer_player_name =="E.Manning") 
+           passer_player_name =="E.Manning") %>% 
+  mutate(year = str_sub(game_id, start = 1, end = 4))
 
 plays.14 <- plays.14 %>%  
-  select(passer_player_name, qb_dropback, qb_scramble, sack, pass_attempt, penalty_type, interception, qb_hit, touchdown, complete_pass) %>% 
+  select(game_id, passer_player_name, qb_dropback, 
+         qb_scramble, sack, pass_attempt, penalty_type, 
+         interception, qb_hit, touchdown, complete_pass) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
            passer_player_name =="A.Rodgers"| 
            passer_player_name =="T.Brady"|
-           passer_player_name =="E.Manning") 
+           passer_player_name =="E.Manning") %>% 
+  mutate(year = str_sub(game_id, start = 1, end = 4))
 
 plays.15 <- plays.15 %>%  
-  select(passer_player_name, qb_dropback, qb_scramble, sack, pass_attempt, penalty_type, interception, qb_hit, touchdown, complete_pass) %>% 
+  select(game_id, passer_player_name, qb_dropback, 
+         qb_scramble, sack, pass_attempt, penalty_type, 
+         interception, qb_hit, touchdown, complete_pass) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
            passer_player_name =="A.Rodgers"| 
            passer_player_name =="T.Brady"|
-           passer_player_name =="E.Manning") 
+           passer_player_name =="E.Manning") %>% 
+  mutate(year = str_sub(game_id, start = 1, end = 4))
 
 plays.16 <- plays.16 %>%  
-  select(passer_player_name, qb_dropback, qb_scramble, sack, pass_attempt, penalty_type, interception, qb_hit, touchdown, complete_pass) %>% 
+  select(game_id, passer_player_name, qb_dropback, 
+         qb_scramble, sack, pass_attempt, penalty_type, 
+         interception, qb_hit, touchdown, complete_pass) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
            passer_player_name =="A.Rodgers"| 
            passer_player_name =="T.Brady"|
-           passer_player_name =="E.Manning") 
+           passer_player_name =="E.Manning") %>% 
+  mutate(year = str_sub(game_id, start = 1, end = 4))
 
 plays.17 <- plays.17 %>%  
-  select(passer_player_name, qb_dropback, qb_scramble, sack, pass_attempt, penalty_type, interception, qb_hit, touchdown, complete_pass) %>% 
+  select(game_id, passer_player_name, qb_dropback, 
+         qb_scramble, sack, pass_attempt, penalty_type, 
+         interception, qb_hit, touchdown, complete_pass) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
            passer_player_name =="A.Rodgers"| 
            passer_player_name =="T.Brady"|
-           passer_player_name =="E.Manning") 
+           passer_player_name =="E.Manning") %>% 
+  mutate(year = str_sub(game_id, start = 1, end = 4))
+
+#Now that I have all the variables and observations I need to combine all the dfs into one. 
 
 all1 <- rbind(plays.09, plays.10)
 all2 <- rbind(all1, plays.11)
@@ -86,4 +115,5 @@ all6 <- rbind(all5, plays.15)
 all7 <- rbind(all6, plays.16)
 all8 <- rbind(all7, plays.17)
 
+#data on the qbs from 2009-2017
   
