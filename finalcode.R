@@ -17,7 +17,7 @@ plays.17 <- read_csv("pbpdata/reg_pbp_2017.csv")
 plays.09 <- plays.09 %>%  
   select(game_id, passer_player_name, qb_dropback, 
          qb_scramble, sack, pass_attempt, penalty_type, 
-         interception, qb_hit, touchdown, complete_pass) %>% 
+         interception, qb_hit, touchdown, complete_pass, ydsnet) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
          passer_player_name =="A.Rodgers"| 
          passer_player_name =="T.Brady"|
@@ -27,7 +27,7 @@ plays.09 <- plays.09 %>%
 plays.10 <- plays.10 %>%  
   select(game_id, passer_player_name, qb_dropback, 
          qb_scramble, sack, pass_attempt, penalty_type, 
-         interception, qb_hit, touchdown, complete_pass) %>% 
+         interception, qb_hit, touchdown, complete_pass, ydsnet) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
            passer_player_name =="A.Rodgers"| 
            passer_player_name =="T.Brady"|
@@ -37,7 +37,7 @@ plays.10 <- plays.10 %>%
 plays.11 <- plays.11 %>%  
   select(game_id, passer_player_name, qb_dropback, 
          qb_scramble, sack, pass_attempt, penalty_type, 
-         interception, qb_hit, touchdown, complete_pass) %>% 
+         interception, qb_hit, touchdown, complete_pass, ydsnet) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
            passer_player_name =="A.Rodgers"| 
            passer_player_name =="T.Brady"|
@@ -47,7 +47,7 @@ plays.11 <- plays.11 %>%
 plays.12 <- plays.12 %>%  
   select(game_id, passer_player_name, qb_dropback, 
          qb_scramble, sack, pass_attempt, penalty_type, 
-         interception, qb_hit, touchdown, complete_pass) %>% 
+         interception, qb_hit, touchdown, complete_pass, ydsnet) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
            passer_player_name =="A.Rodgers"| 
            passer_player_name =="T.Brady"|
@@ -57,7 +57,7 @@ plays.12 <- plays.12 %>%
 plays.13 <- plays.13 %>%  
   select(game_id, passer_player_name, qb_dropback, 
          qb_scramble, sack, pass_attempt, penalty_type, 
-         interception, qb_hit, touchdown, complete_pass) %>% 
+         interception, qb_hit, touchdown, complete_pass, ydsnet) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
            passer_player_name =="A.Rodgers"| 
            passer_player_name =="T.Brady"|
@@ -67,7 +67,7 @@ plays.13 <- plays.13 %>%
 plays.14 <- plays.14 %>%  
   select(game_id, passer_player_name, qb_dropback, 
          qb_scramble, sack, pass_attempt, penalty_type, 
-         interception, qb_hit, touchdown, complete_pass) %>% 
+         interception, qb_hit, touchdown, complete_pass, ydsnet) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
            passer_player_name =="A.Rodgers"| 
            passer_player_name =="T.Brady"|
@@ -77,7 +77,7 @@ plays.14 <- plays.14 %>%
 plays.15 <- plays.15 %>%  
   select(game_id, passer_player_name, qb_dropback, 
          qb_scramble, sack, pass_attempt, penalty_type, 
-         interception, qb_hit, touchdown, complete_pass) %>% 
+         interception, qb_hit, touchdown, complete_pass, ydsnet) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
            passer_player_name =="A.Rodgers"| 
            passer_player_name =="T.Brady"|
@@ -87,7 +87,7 @@ plays.15 <- plays.15 %>%
 plays.16 <- plays.16 %>%  
   select(game_id, passer_player_name, qb_dropback, 
          qb_scramble, sack, pass_attempt, penalty_type, 
-         interception, qb_hit, touchdown, complete_pass) %>% 
+         interception, qb_hit, touchdown, complete_pass, ydsnet) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
            passer_player_name =="A.Rodgers"| 
            passer_player_name =="T.Brady"|
@@ -97,7 +97,7 @@ plays.16 <- plays.16 %>%
 plays.17 <- plays.17 %>%  
   select(game_id, passer_player_name, qb_dropback, 
          qb_scramble, sack, pass_attempt, penalty_type, 
-         interception, qb_hit, touchdown, complete_pass) %>% 
+         interception, qb_hit, touchdown, complete_pass, ydsnet) %>% 
   filter(passer_player_name == "B.Roethlisberger"|
            passer_player_name =="A.Rodgers"| 
            passer_player_name =="T.Brady"|
@@ -116,4 +116,6 @@ all7 <- rbind(all6, plays.16)
 all8 <- rbind(all7, plays.17)
 
 #data on the qbs from 2009-2017
+
+
   
