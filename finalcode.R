@@ -214,6 +214,8 @@ stats11d <- left_join(stats11c, sack11, by = "passer_player_name")
 stats11 <- stats11d %>% 
   mutate(year = "2011")
 
+#2012
+
 plays.12 <- plays.12 %>%  
   select(game_id, passer_player_name, qb_dropback, 
          qb_scramble, sack, pass_attempt, penalty_type, 
@@ -223,6 +225,63 @@ plays.12 <- plays.12 %>%
            passer_player_name =="T.Brady"|
            passer_player_name =="E.Manning") %>% 
   mutate(year = str_sub(game_id, start = 1, end = 4))
+
+#completion percentage
+comp_pct12 <- plays.12 %>% 
+  group_by(passer_player_name) %>% 
+  count(complete_pass) %>% 
+  mutate(comp_pct = round(n/sum(n)*100)) %>% 
+  filter(complete_pass == "1") %>% 
+  select(passer_player_name, comp_pct)
+
+#Touchdowns 
+tds12 <- plays.12 %>% 
+  group_by(passer_player_name) %>% 
+  count(touchdown) %>% 
+  filter(touchdown =="1") %>% 
+  mutate(touchdowns = n) %>% 
+  select(passer_player_name, touchdowns)
+
+#interceptions 
+int12 <- plays.12 %>%  
+  group_by(passer_player_name) %>% 
+  count(interception) %>% 
+  filter(interception =="1") %>% 
+  mutate(interceptions = n) %>% 
+  select(passer_player_name, interceptions)
+
+#passing yards
+#py09 <- plays.09 %>% 
+#group_by(passer_player_name) %>% 
+#count(ydsnet) %>%
+#mutate(passingyards = sum(ydsnet)) %>%  
+#select(passer_player_name, passingyards) %>% 
+
+#hits
+hits12 <- plays.12 %>% 
+  group_by(passer_player_name) %>% 
+  count(qb_hit) %>% 
+  filter(qb_hit =="1") %>% 
+  mutate(Hits = n) %>% 
+  select(passer_player_name, Hits)
+
+#sack
+sack12 <- plays.12 %>%  
+  group_by(passer_player_name) %>% 
+  count(sack) %>% 
+  filter(sack =="1") %>% 
+  mutate(Sacks = n) %>% 
+  select(passer_player_name, Sacks)
+
+stats12a <- left_join(comp_pct12, tds12, by = "passer_player_name")
+stats12b <- left_join(stats12a, int12, by = "passer_player_name")
+stats12c <- left_join(stats12b, hits12, by = "passer_player_name")
+stats12d <- left_join(stats12c, sack12, by = "passer_player_name")
+
+stats12 <- stats12d %>% 
+  mutate(year = "2012")
+
+#2013
 
 plays.13 <- plays.13 %>%  
   select(game_id, passer_player_name, qb_dropback, 
@@ -234,6 +293,63 @@ plays.13 <- plays.13 %>%
            passer_player_name =="E.Manning") %>% 
   mutate(year = str_sub(game_id, start = 1, end = 4))
 
+#completion percentage
+comp_pct13 <- plays.13 %>% 
+  group_by(passer_player_name) %>% 
+  count(complete_pass) %>% 
+  mutate(comp_pct = round(n/sum(n)*100)) %>% 
+  filter(complete_pass == "1") %>% 
+  select(passer_player_name, comp_pct)
+
+#Touchdowns 
+tds13 <- plays.13 %>% 
+  group_by(passer_player_name) %>% 
+  count(touchdown) %>% 
+  filter(touchdown =="1") %>% 
+  mutate(touchdowns = n) %>% 
+  select(passer_player_name, touchdowns)
+
+#interceptions 
+int13 <- plays.13 %>%  
+  group_by(passer_player_name) %>% 
+  count(interception) %>% 
+  filter(interception =="1") %>% 
+  mutate(interceptions = n) %>% 
+  select(passer_player_name, interceptions)
+
+#passing yards
+#py09 <- plays.09 %>% 
+#group_by(passer_player_name) %>% 
+#count(ydsnet) %>%
+#mutate(passingyards = sum(ydsnet)) %>%  
+#select(passer_player_name, passingyards) %>% 
+
+#hits
+hits13 <- plays.13 %>% 
+  group_by(passer_player_name) %>% 
+  count(qb_hit) %>% 
+  filter(qb_hit =="1") %>% 
+  mutate(Hits = n) %>% 
+  select(passer_player_name, Hits)
+
+#sack
+sack13 <- plays.13 %>%  
+  group_by(passer_player_name) %>% 
+  count(sack) %>% 
+  filter(sack =="1") %>% 
+  mutate(Sacks = n) %>% 
+  select(passer_player_name, Sacks)
+
+stats13a <- left_join(comp_pct13, tds13, by = "passer_player_name")
+stats13b <- left_join(stats13a, int13, by = "passer_player_name")
+stats13c <- left_join(stats13b, hits13, by = "passer_player_name")
+stats13d <- left_join(stats13c, sack13, by = "passer_player_name")
+
+stats13 <- stats13d %>% 
+  mutate(year = "2013")
+
+#2014
+
 plays.14 <- plays.14 %>%  
   select(game_id, passer_player_name, qb_dropback, 
          qb_scramble, sack, pass_attempt, penalty_type, 
@@ -244,6 +360,62 @@ plays.14 <- plays.14 %>%
            passer_player_name =="E.Manning") %>% 
   mutate(year = str_sub(game_id, start = 1, end = 4))
 
+#completion percentage
+comp_pct14 <- plays.14 %>% 
+  group_by(passer_player_name) %>% 
+  count(complete_pass) %>% 
+  mutate(comp_pct = round(n/sum(n)*100)) %>% 
+  filter(complete_pass == "1") %>% 
+  select(passer_player_name, comp_pct)
+
+#Touchdowns 
+tds14 <- plays.14 %>% 
+  group_by(passer_player_name) %>% 
+  count(touchdown) %>% 
+  filter(touchdown =="1") %>% 
+  mutate(touchdowns = n) %>% 
+  select(passer_player_name, touchdowns)
+
+#interceptions 
+int14 <- plays.14 %>%  
+  group_by(passer_player_name) %>% 
+  count(interception) %>% 
+  filter(interception =="1") %>% 
+  mutate(interceptions = n) %>% 
+  select(passer_player_name, interceptions)
+
+#passing yards
+#py09 <- plays.09 %>% 
+#group_by(passer_player_name) %>% 
+#count(ydsnet) %>%
+#mutate(passingyards = sum(ydsnet)) %>%  
+#select(passer_player_name, passingyards) %>% 
+
+#hits
+hits14 <- plays.14 %>% 
+  group_by(passer_player_name) %>% 
+  count(qb_hit) %>% 
+  filter(qb_hit =="1") %>% 
+  mutate(Hits = n) %>% 
+  select(passer_player_name, Hits)
+
+#sack
+sack14 <- plays.14 %>%  
+  group_by(passer_player_name) %>% 
+  count(sack) %>% 
+  filter(sack =="1") %>% 
+  mutate(Sacks = n) %>% 
+  select(passer_player_name, Sacks)
+
+stats14a <- left_join(comp_pct14, tds14, by = "passer_player_name")
+stats14b <- left_join(stats14a, int14, by = "passer_player_name")
+stats14c <- left_join(stats14b, hits14, by = "passer_player_name")
+stats14d <- left_join(stats14c, sack14, by = "passer_player_name")
+
+stats14 <- stats14d %>% 
+  mutate(year = "2014")
+
+#2015
 plays.15 <- plays.15 %>%  
   select(game_id, passer_player_name, qb_dropback, 
          qb_scramble, sack, pass_attempt, penalty_type, 
@@ -254,6 +426,62 @@ plays.15 <- plays.15 %>%
            passer_player_name =="E.Manning") %>% 
   mutate(year = str_sub(game_id, start = 1, end = 4))
 
+#completion percentage
+comp_pct15 <- plays.15 %>% 
+  group_by(passer_player_name) %>% 
+  count(complete_pass) %>% 
+  mutate(comp_pct = round(n/sum(n)*100)) %>% 
+  filter(complete_pass == "1") %>% 
+  select(passer_player_name, comp_pct)
+
+#Touchdowns 
+tds15 <- plays.15 %>% 
+  group_by(passer_player_name) %>% 
+  count(touchdown) %>% 
+  filter(touchdown =="1") %>% 
+  mutate(touchdowns = n) %>% 
+  select(passer_player_name, touchdowns)
+
+#interceptions 
+int15 <- plays.15 %>%  
+  group_by(passer_player_name) %>% 
+  count(interception) %>% 
+  filter(interception =="1") %>% 
+  mutate(interceptions = n) %>% 
+  select(passer_player_name, interceptions)
+
+#passing yards
+#py09 <- plays.09 %>% 
+#group_by(passer_player_name) %>% 
+#count(ydsnet) %>%
+#mutate(passingyards = sum(ydsnet)) %>%  
+#select(passer_player_name, passingyards) %>% 
+
+#hits
+hits15 <- plays.15 %>% 
+  group_by(passer_player_name) %>% 
+  count(qb_hit) %>% 
+  filter(qb_hit =="1") %>% 
+  mutate(Hits = n) %>% 
+  select(passer_player_name, Hits)
+
+#sack
+sack15 <- plays.15 %>%  
+  group_by(passer_player_name) %>% 
+  count(sack) %>% 
+  filter(sack =="1") %>% 
+  mutate(Sacks = n) %>% 
+  select(passer_player_name, Sacks)
+
+stats15a <- left_join(comp_pct15, tds15, by = "passer_player_name")
+stats15b <- left_join(stats15a, int15, by = "passer_player_name")
+stats15c <- left_join(stats15b, hits15, by = "passer_player_name")
+stats15d <- left_join(stats15c, sack15, by = "passer_player_name")
+
+stats15 <- stats15d %>% 
+  mutate(year = "2015")
+
+#2016
 plays.16 <- plays.16 %>%  
   select(game_id, passer_player_name, qb_dropback, 
          qb_scramble, sack, pass_attempt, penalty_type, 
@@ -264,6 +492,62 @@ plays.16 <- plays.16 %>%
            passer_player_name =="E.Manning") %>% 
   mutate(year = str_sub(game_id, start = 1, end = 4))
 
+#completion percentage
+comp_pct16 <- plays.16 %>% 
+  group_by(passer_player_name) %>% 
+  count(complete_pass) %>% 
+  mutate(comp_pct = round(n/sum(n)*100)) %>% 
+  filter(complete_pass == "1") %>% 
+  select(passer_player_name, comp_pct)
+
+#Touchdowns 
+tds16 <- plays.16 %>% 
+  group_by(passer_player_name) %>% 
+  count(touchdown) %>% 
+  filter(touchdown =="1") %>% 
+  mutate(touchdowns = n) %>% 
+  select(passer_player_name, touchdowns)
+
+#interceptions 
+int16 <- plays.16 %>%  
+  group_by(passer_player_name) %>% 
+  count(interception) %>% 
+  filter(interception =="1") %>% 
+  mutate(interceptions = n) %>% 
+  select(passer_player_name, interceptions)
+
+#passing yards
+#py09 <- plays.09 %>% 
+#group_by(passer_player_name) %>% 
+#count(ydsnet) %>%
+#mutate(passingyards = sum(ydsnet)) %>%  
+#select(passer_player_name, passingyards) %>% 
+
+#hits
+hits16 <- plays.16 %>% 
+  group_by(passer_player_name) %>% 
+  count(qb_hit) %>% 
+  filter(qb_hit =="1") %>% 
+  mutate(Hits = n) %>% 
+  select(passer_player_name, Hits)
+
+#sack
+sack16 <- plays.16 %>%  
+  group_by(passer_player_name) %>% 
+  count(sack) %>% 
+  filter(sack =="1") %>% 
+  mutate(Sacks = n) %>% 
+  select(passer_player_name, Sacks)
+
+stats16a <- left_join(comp_pct16, tds16, by = "passer_player_name")
+stats16b <- left_join(stats16a, int16, by = "passer_player_name")
+stats16c <- left_join(stats16b, hits16, by = "passer_player_name")
+stats16d <- left_join(stats16c, sack16, by = "passer_player_name")
+
+stats16 <- stats16d %>% 
+  mutate(year = "2016")
+
+#2017
 plays.17 <- plays.17 %>%  
   select(game_id, passer_player_name, qb_dropback, 
          qb_scramble, sack, pass_attempt, penalty_type, 
@@ -274,16 +558,71 @@ plays.17 <- plays.17 %>%
            passer_player_name =="E.Manning") %>% 
   mutate(year = str_sub(game_id, start = 1, end = 4))
 
+#completion percentage
+comp_pct17 <- plays.17 %>% 
+  group_by(passer_player_name) %>% 
+  count(complete_pass) %>% 
+  mutate(comp_pct = round(n/sum(n)*100)) %>% 
+  filter(complete_pass == "1") %>% 
+  select(passer_player_name, comp_pct)
+
+#Touchdowns 
+tds17 <- plays.17 %>% 
+  group_by(passer_player_name) %>% 
+  count(touchdown) %>% 
+  filter(touchdown =="1") %>% 
+  mutate(touchdowns = n) %>% 
+  select(passer_player_name, touchdowns)
+
+#interceptions 
+int17 <- plays.17 %>%  
+  group_by(passer_player_name) %>% 
+  count(interception) %>% 
+  filter(interception =="1") %>% 
+  mutate(interceptions = n) %>% 
+  select(passer_player_name, interceptions)
+
+#passing yards
+#py09 <- plays.09 %>% 
+#group_by(passer_player_name) %>% 
+#count(ydsnet) %>%
+#mutate(passingyards = sum(ydsnet)) %>%  
+#select(passer_player_name, passingyards) %>% 
+
+#hits
+hits17 <- plays.17 %>% 
+  group_by(passer_player_name) %>% 
+  count(qb_hit) %>% 
+  filter(qb_hit =="1") %>% 
+  mutate(Hits = n) %>% 
+  select(passer_player_name, Hits)
+
+#sack
+sack17 <- plays.17 %>%  
+  group_by(passer_player_name) %>% 
+  count(sack) %>% 
+  filter(sack =="1") %>% 
+  mutate(Sacks = n) %>% 
+  select(passer_player_name, Sacks)
+
+stats17a <- left_join(comp_pct17, tds17, by = "passer_player_name")
+stats17b <- left_join(stats17a, int17, by = "passer_player_name")
+stats17c <- left_join(stats17b, hits17, by = "passer_player_name")
+stats17d <- left_join(stats17c, sack17, by = "passer_player_name")
+
+stats17 <- stats17d %>% 
+  mutate(year = "2017")
+
 #Now that I have all the variables and observations I need to combine all the dfs into one. 
 
-all1 <- rbind(plays.09, plays.10)
-all2 <- rbind(all1, plays.11)
-all3 <- rbind(all2, plays.12)
-all4 <- rbind(all3, plays.13)
-all5 <- rbind(all4, plays.14)
-all6 <- rbind(all5, plays.15)
-all7 <- rbind(all6, plays.16)
-all8 <- rbind(all7, plays.17)
+all1 <- rbind(stats09, stats10)
+all2 <- rbind(all1, stats11)
+all3 <- rbind(all2, stats12)
+all4 <- rbind(all3, stats13)
+all5 <- rbind(all4, stats14)
+all6 <- rbind(all5, stats15)
+all7 <- rbind(all6, stats16)
+all8 <- rbind(all7, stats17)
 
 #data on the qbs from 2009-2017
 
