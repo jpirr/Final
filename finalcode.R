@@ -51,11 +51,13 @@ int09 <- plays.09 %>%
   select(passer_player_name, interceptions)
 
 #2009 passing yards
-#py09 <- plays.09 %>% 
-  #group_by(passer_player_name) %>% 
-  #count(ydsnet) %>%
-  #mutate(passingyards = sum(ydsnet)) %>%  
-  #select(passer_player_name, passingyards) %>% 
+py09 <- plays.09 %>% 
+  group_by(passer_player_name) %>% 
+  select(passer_player_name, ydsnet) %>%
+  count(ydsnet) %>%
+  mutate(passingyards = sum(ydsnet)) %>% 
+  select(passer_player_name, passingyards) %>% 
+  summarise(mean(passingyards))
 
 #2009 hits
 hits09 <- plays.09 %>% 
@@ -73,12 +75,14 @@ sack09 <- plays.09 %>%
   mutate(Sacks = n) %>% 
   select(passer_player_name, Sacks)
 
+
 stats09a <- left_join(comp_pct09, tds09, by = "passer_player_name")
 stats09b <- left_join(stats09a, int09, by = "passer_player_name")
 stats09c <- left_join(stats09b, hits09, by = "passer_player_name")
 stats09d <- left_join(stats09c, sack09, by = "passer_player_name")
+stats09e <- left_join(stats09d, py09, by = "passer_player_name")
 
-stats09 <- stats09d %>% 
+stats09 <- stats09e %>% 
   mutate(year = "2009")
 
 #2010
@@ -118,11 +122,13 @@ int10 <- plays.10 %>%
   select(passer_player_name, interceptions)
 
 #passing yards
-#py09 <- plays.09 %>% 
-#group_by(passer_player_name) %>% 
-#count(ydsnet) %>%
-#mutate(passingyards = sum(ydsnet)) %>%  
-#select(passer_player_name, passingyards) %>% 
+py10 <- plays.10 %>% 
+  group_by(passer_player_name) %>% 
+  select(passer_player_name, ydsnet) %>%
+  count(ydsnet) %>%
+  mutate(passingyards = sum(ydsnet)) %>% 
+  select(passer_player_name, passingyards) %>% 
+  summarise(mean(passingyards)) 
 
 #hits
 hits10 <- plays.10 %>% 
@@ -144,8 +150,9 @@ stats10a <- left_join(comp_pct10, tds10, by = "passer_player_name")
 stats10b <- left_join(stats10a, int10, by = "passer_player_name")
 stats10c <- left_join(stats10b, hits10, by = "passer_player_name")
 stats10d <- left_join(stats10c, sack10, by = "passer_player_name")
+stats10e <- left_join(stats10d, py10, by = "passer_player_name")
 
-stats10 <- stats10d %>% 
+stats10 <- stats10e %>% 
   mutate(year = "2010")
 
 #2011
@@ -184,11 +191,13 @@ int11 <- plays.11 %>%
   select(passer_player_name, interceptions)
 
 #passing yards
-#py09 <- plays.09 %>% 
-#group_by(passer_player_name) %>% 
-#count(ydsnet) %>%
-#mutate(passingyards = sum(ydsnet)) %>%  
-#select(passer_player_name, passingyards) %>% 
+py11 <- plays.11 %>% 
+  group_by(passer_player_name) %>% 
+  select(passer_player_name, ydsnet) %>%
+  count(ydsnet) %>%
+  mutate(passingyards = sum(ydsnet)) %>% 
+  select(passer_player_name, passingyards) %>% 
+  summarise(mean(passingyards))
 
 #hits
 hits11 <- plays.11 %>% 
@@ -210,8 +219,9 @@ stats11a <- left_join(comp_pct11, tds11, by = "passer_player_name")
 stats11b <- left_join(stats11a, int11, by = "passer_player_name")
 stats11c <- left_join(stats11b, hits11, by = "passer_player_name")
 stats11d <- left_join(stats11c, sack11, by = "passer_player_name")
+stats11e <- left_join(stats11d, py11, by = "passer_player_name")
 
-stats11 <- stats11d %>% 
+stats11 <- stats11e %>% 
   mutate(year = "2011")
 
 #2012
@@ -251,11 +261,13 @@ int12 <- plays.12 %>%
   select(passer_player_name, interceptions)
 
 #passing yards
-#py09 <- plays.09 %>% 
-#group_by(passer_player_name) %>% 
-#count(ydsnet) %>%
-#mutate(passingyards = sum(ydsnet)) %>%  
-#select(passer_player_name, passingyards) %>% 
+py12 <- plays.12 %>% 
+  group_by(passer_player_name) %>% 
+  select(passer_player_name, ydsnet) %>%
+  count(ydsnet) %>%
+  mutate(passingyards = sum(ydsnet)) %>% 
+  select(passer_player_name, passingyards) %>% 
+  summarise(mean(passingyards))
 
 #hits
 hits12 <- plays.12 %>% 
@@ -277,8 +289,9 @@ stats12a <- left_join(comp_pct12, tds12, by = "passer_player_name")
 stats12b <- left_join(stats12a, int12, by = "passer_player_name")
 stats12c <- left_join(stats12b, hits12, by = "passer_player_name")
 stats12d <- left_join(stats12c, sack12, by = "passer_player_name")
+stats12e <- left_join(stats12d, py12, by = "passer_player_name")
 
-stats12 <- stats12d %>% 
+stats12 <- stats12e %>% 
   mutate(year = "2012")
 
 #2013
@@ -318,11 +331,13 @@ int13 <- plays.13 %>%
   select(passer_player_name, interceptions)
 
 #passing yards
-#py09 <- plays.09 %>% 
-#group_by(passer_player_name) %>% 
-#count(ydsnet) %>%
-#mutate(passingyards = sum(ydsnet)) %>%  
-#select(passer_player_name, passingyards) %>% 
+py13 <- plays.13 %>% 
+  group_by(passer_player_name) %>% 
+  select(passer_player_name, ydsnet) %>%
+  count(ydsnet) %>%
+  mutate(passingyards = sum(ydsnet)) %>% 
+  select(passer_player_name, passingyards) %>% 
+  summarise(mean(passingyards))
 
 #hits
 hits13 <- plays.13 %>% 
@@ -344,8 +359,9 @@ stats13a <- left_join(comp_pct13, tds13, by = "passer_player_name")
 stats13b <- left_join(stats13a, int13, by = "passer_player_name")
 stats13c <- left_join(stats13b, hits13, by = "passer_player_name")
 stats13d <- left_join(stats13c, sack13, by = "passer_player_name")
+stats13e <- left_join(stats13d, py13, by = "passer_player_name")
 
-stats13 <- stats13d %>% 
+stats13 <- stats13e %>% 
   mutate(year = "2013")
 
 #2014
@@ -385,11 +401,13 @@ int14 <- plays.14 %>%
   select(passer_player_name, interceptions)
 
 #passing yards
-#py09 <- plays.09 %>% 
-#group_by(passer_player_name) %>% 
-#count(ydsnet) %>%
-#mutate(passingyards = sum(ydsnet)) %>%  
-#select(passer_player_name, passingyards) %>% 
+py14 <- plays.14 %>% 
+  group_by(passer_player_name) %>% 
+  select(passer_player_name, ydsnet) %>%
+  count(ydsnet) %>%
+  mutate(passingyards = sum(ydsnet)) %>% 
+  select(passer_player_name, passingyards) %>% 
+  summarise(mean(passingyards))
 
 #hits
 hits14 <- plays.14 %>% 
@@ -411,8 +429,9 @@ stats14a <- left_join(comp_pct14, tds14, by = "passer_player_name")
 stats14b <- left_join(stats14a, int14, by = "passer_player_name")
 stats14c <- left_join(stats14b, hits14, by = "passer_player_name")
 stats14d <- left_join(stats14c, sack14, by = "passer_player_name")
+stats14e <- left_join(stats14d, py14, by = "passer_player_name")
 
-stats14 <- stats14d %>% 
+stats14 <- stats14e %>% 
   mutate(year = "2014")
 
 #2015
@@ -451,11 +470,13 @@ int15 <- plays.15 %>%
   select(passer_player_name, interceptions)
 
 #passing yards
-#py09 <- plays.09 %>% 
-#group_by(passer_player_name) %>% 
-#count(ydsnet) %>%
-#mutate(passingyards = sum(ydsnet)) %>%  
-#select(passer_player_name, passingyards) %>% 
+py15 <- plays.15 %>% 
+  group_by(passer_player_name) %>% 
+  select(passer_player_name, ydsnet) %>%
+  count(ydsnet) %>%
+  mutate(passingyards = sum(ydsnet)) %>% 
+  select(passer_player_name, passingyards) %>% 
+  summarise(mean(passingyards))
 
 #hits
 hits15 <- plays.15 %>% 
@@ -477,8 +498,9 @@ stats15a <- left_join(comp_pct15, tds15, by = "passer_player_name")
 stats15b <- left_join(stats15a, int15, by = "passer_player_name")
 stats15c <- left_join(stats15b, hits15, by = "passer_player_name")
 stats15d <- left_join(stats15c, sack15, by = "passer_player_name")
+stats15e <- left_join(stats15d, py15, by = "passer_player_name")
 
-stats15 <- stats15d %>% 
+stats15 <- stats15e %>% 
   mutate(year = "2015")
 
 #2016
@@ -517,11 +539,13 @@ int16 <- plays.16 %>%
   select(passer_player_name, interceptions)
 
 #passing yards
-#py09 <- plays.09 %>% 
-#group_by(passer_player_name) %>% 
-#count(ydsnet) %>%
-#mutate(passingyards = sum(ydsnet)) %>%  
-#select(passer_player_name, passingyards) %>% 
+py16 <- plays.16 %>% 
+  group_by(passer_player_name) %>% 
+  select(passer_player_name, ydsnet) %>%
+  count(ydsnet) %>%
+  mutate(passingyards = sum(ydsnet)) %>% 
+  select(passer_player_name, passingyards) %>% 
+  summarise(mean(passingyards))
 
 #hits
 hits16 <- plays.16 %>% 
@@ -543,8 +567,9 @@ stats16a <- left_join(comp_pct16, tds16, by = "passer_player_name")
 stats16b <- left_join(stats16a, int16, by = "passer_player_name")
 stats16c <- left_join(stats16b, hits16, by = "passer_player_name")
 stats16d <- left_join(stats16c, sack16, by = "passer_player_name")
+stats16e <- left_join(stats16d, py16, by = "passer_player_name")
 
-stats16 <- stats16d %>% 
+stats16 <- stats16e %>% 
   mutate(year = "2016")
 
 #2017
@@ -583,11 +608,13 @@ int17 <- plays.17 %>%
   select(passer_player_name, interceptions)
 
 #passing yards
-#py09 <- plays.09 %>% 
-#group_by(passer_player_name) %>% 
-#count(ydsnet) %>%
-#mutate(passingyards = sum(ydsnet)) %>%  
-#select(passer_player_name, passingyards) %>% 
+py17 <- plays.17 %>% 
+  group_by(passer_player_name) %>% 
+  select(passer_player_name, ydsnet) %>%
+  count(ydsnet) %>%
+  mutate(passingyards = sum(ydsnet)) %>% 
+  select(passer_player_name, passingyards) %>% 
+  summarise(mean(passingyards))
 
 #hits
 hits17 <- plays.17 %>% 
@@ -609,8 +636,9 @@ stats17a <- left_join(comp_pct17, tds17, by = "passer_player_name")
 stats17b <- left_join(stats17a, int17, by = "passer_player_name")
 stats17c <- left_join(stats17b, hits17, by = "passer_player_name")
 stats17d <- left_join(stats17c, sack17, by = "passer_player_name")
+stats17e <- left_join(stats17d, py17, by = "passer_player_name")
 
-stats17 <- stats17d %>% 
+stats17 <- stats17e %>% 
   mutate(year = "2017")
 
 #Now that I have all the variables and observations I need to combine all the dfs into one. 
@@ -622,7 +650,8 @@ all4 <- rbind(all3, stats13)
 all5 <- rbind(all4, stats14)
 all6 <- rbind(all5, stats15)
 all7 <- rbind(all6, stats16)
-all8 <- rbind(all7, stats17)
+all8 <- rbind(all7, stats17) 
+all9 <- rename(all8, Passing_Yards = "mean(passingyards)")
 
 #data on the qbs from 2009-2017
 
@@ -636,7 +665,7 @@ all8 <- rbind(all7, stats17)
                  #qb_scramble = Scramble, 
                  #qb_hit = Hit))
 
-write_rds(all8, "QBs.rds", compress = "none")
+write_rds(all9, "QBs.rds", compress = "none")
 
 
   
