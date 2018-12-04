@@ -9,8 +9,9 @@ library(scales)
 library(stargazer)
 library(ggrepel)
 library(tidyverse)
-Qbs <- read_rds("~/Desktop/Data/Final/QBs.rds")
 
+#Qbs <- read_rds("~/Desktop/Data/Final/QBs/QBs.rds")
+Qbs <- read_rds("QBs.rds")
 
 
 
@@ -25,7 +26,7 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                                       sidebarPanel(
                                         # input choices for x-axis variables
                                         selectInput("x_axis",
-                                                    "Independent Variable:",
+                                                    "OLine Statistic",
                                                     choices = c("Sacks" = "Sacks", 
                                                                 "Hits" = "Hits")), 
                                         tags$h6(helpText("These statistics are considered to be a measure of good OLine play. The less sacks/hits an OLine gives up the better they are.")),
@@ -33,9 +34,9 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                                         br(),
                                         
                                         selectInput("y_axis",
-                                                    "Dependent Variable:",
+                                                    "Quarterback Statistic",
                                                     choices = c("Completion Percentage" = "comp_pct", 
-                                                                "Touchdowns" = "touchdown", 
+                                                                "Touchdowns" = "touchdowns", 
                                                                 "Interceptions" = "interceptions", 
                                                                 "Passing Yards" = "Passing_Yards")), 
                                         tags$h6(helpText("These statistics are considered to be a measure for good QB play. The more touchdowns, yards, and completions a QB has the better he is.")), 
@@ -45,8 +46,8 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                                       ),
                                         
                                       mainPanel(
-                                          plotOutput("plot"),
-                                          htmlOutput("summary")
+                                        plotOutput("plot"),
+                                         htmlOutput("summary")
                                         )
                                       )
                                     )
@@ -68,10 +69,10 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                   
                   # create function to reactively change y-axis label
                   y_label <- reactive({
-                    req(input$yaxis)
+                    req(input$y_axis)
                     if(input$y_axis == "comp_pct"){
                       y_label <- "Completion Percentage"
-                    } else if(input$y_axis == "touchdown"){
+                    } else if(input$y_axis == "touchdowns"){
                       y_label <- "Touchdowns"
                     } else if(imput$y_axis == "interceptions"){
                       y_label <- "Interceptions"
@@ -81,9 +82,9 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                     })
                   
                   output$plot <- renderPlot({
-                    if (input$plot == TRUE) {
+                    
                       Qbs %>%
-                        ggplot(aes_string(x = input$x_axis, y = input$y_axis, color = passer_player_name)) +
+                        ggplot(aes_string(x = input$x_axis, y = input$y_axis, color = "passer_player_name")) +
                         geom_point() +
                         geom_smooth(method = "lm", se = FALSE) + 
                         geom_label_repel(aes(label = year)) +
@@ -92,7 +93,7 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                              title = "QB Preformance in Relation to OLine Play",
                              subtitle = " ",
                              caption = "Data taken from Kaggle*")
-                    }
+                    
                   })
                   
                   }
