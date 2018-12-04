@@ -3,7 +3,6 @@ library(haven)
 library(sjlabelled)
 library(rsconnect)
 library(shinythemes)
-#library(plotly)
 library(knitr)
 library(scales)
 library(stargazer)
@@ -41,8 +40,14 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                                                                 "Passing Yards" = "Passing_Yards")), 
                                         tags$h6(helpText("These statistics are considered to be a measure for good QB play. The more touchdowns, yards, and completions a QB has the better he is.")), 
                                         
-                                        br() 
+                                        br(), 
                                         
+                                        selectInput("year", 
+                                                    "Year", 
+                                                    choices = c("All","2009", "2010", "2011", "2012", 
+                                                                "2013", "2014", "2015", "2016", 
+                                                                "2017"), 
+                                                    selected = "All")
                                       ),
                                         
                                       mainPanel(
@@ -74,15 +79,15 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                       y_label <- "Completion Percentage"
                     } else if(input$y_axis == "touchdowns"){
                       y_label <- "Touchdowns"
-                    } else if(imput$y_axis == "interceptions"){
+                    } else if(input$y_axis == "interceptions"){
                       y_label <- "Interceptions"
-                    } else if(imput$y_axis == "Passing_Yards"){
+                    } else if(input$y_axis == "Passing_Yards"){
                       y_label <- "Passing Yards"
                     }
                     })
                   
                   output$plot <- renderPlot({
-                    
+                    if (input$year != "All"){Qbs <- Qbs %>% filter(year == input$year)} #Want default to be all years but to have option of individual year
                       Qbs %>%
                         ggplot(aes_string(x = input$x_axis, y = input$y_axis, color = "passer_player_name")) +
                         geom_point() +
@@ -90,9 +95,9 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                         geom_label_repel(aes(label = year)) +
                         labs(x = x_label(),
                              y = y_label(),
-                             title = "QB Preformance in Relation to OLine Play",
-                             subtitle = " ",
-                             caption = "Data taken from Kaggle*")
+                             title = "QB Performance in Relation to OLine Play",
+                             subtitle = "Some metrics show stronger relationships than others ",
+                             caption = "Data taken from Kaggle")
                     
                   })
                   

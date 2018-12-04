@@ -57,7 +57,7 @@ py09 <- plays.09 %>%
   count(ydsnet) %>%
   mutate(passingyards = sum(ydsnet)) %>% 
   select(passer_player_name, passingyards) %>% 
-  summarise(mean(passingyards))
+  summarise(mean(passingyards))#for some reason I had to take the mean of all the passing yards to get the df I wanted. I will have to do this for each of the following years as well. 
 
 #2009 hits
 hits09 <- plays.09 %>% 
@@ -75,7 +75,8 @@ sack09 <- plays.09 %>%
   mutate(Sacks = n) %>% 
   select(passer_player_name, Sacks)
 
-
+#joining the all the statistics that I just found by the quarterback to get one table with all releveant stats for 2009
+#I will have to do this for each year annd then join the data frames for each year at the end
 stats09a <- left_join(comp_pct09, tds09, by = "passer_player_name")
 stats09b <- left_join(stats09a, int09, by = "passer_player_name")
 stats09c <- left_join(stats09b, hits09, by = "passer_player_name")
@@ -641,7 +642,7 @@ stats17e <- left_join(stats17d, py17, by = "passer_player_name")
 stats17 <- stats17e %>% 
   mutate(year = "2017")
 
-#Now that I have all the variables and observations I need to combine all the dfs into one. 
+#Now that I have all the variables and observations for each individual year I need to combine all the dfs into one. 
 
 all1 <- rbind(stats09, stats10)
 all2 <- rbind(all1, stats11)
@@ -651,19 +652,11 @@ all5 <- rbind(all4, stats14)
 all6 <- rbind(all5, stats15)
 all7 <- rbind(all6, stats16)
 all8 <- rbind(all7, stats17) 
-all9 <- rename(all8, Passing_Yards = "mean(passingyards)")
+all9 <- rename(all8, Passing_Yards = "mean(passingyards)") #changing the variable name to be clear
 
 #data on the qbs from 2009-2017
 
-
-
-
- # rename(all8, c(passer_player_name = QB, 
-                # ydsnet = Yards, 
-                 #touchdown = Touchdown, 
-                 #penalty_type = Penalty, 
-                 #qb_scramble = Scramble, 
-                 #qb_hit = Hit))
+#creating new file type
 
 write_rds(all9, "QBs.rds", compress = "none")
 
