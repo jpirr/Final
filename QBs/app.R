@@ -9,6 +9,7 @@ library(stargazer)
 library(ggrepel)
 library(tidyverse)
 
+# Use the first read command with filepath when troubleshooting
 #Qbs <- read_rds("~/Desktop/Data/Final/QBs/QBs.rds")
 Qbs <- read_rds("QBs.rds")
 
